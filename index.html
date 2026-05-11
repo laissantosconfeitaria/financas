@@ -957,7 +957,7 @@ async function importarDados(input){
 
 // ========== SERVICE WORKER ==========
 if('serviceWorker' in navigator){
-  navigator.serviceWorker.register('sw-financas.js').catch(()=>{});
+  navigator.serviceWorker.register('/financas/sw-financas.js', {scope: '/financas/'}).catch(()=>{});
 }
 
 // ========== INIT ==========
