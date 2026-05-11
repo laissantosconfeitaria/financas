@@ -200,7 +200,13 @@ select option{background:var(--bg2)}
 
   <!-- HEADER -->
   <div class="app-header">
-    <div class="header-brand">◈ Finanças</div>
+    <div style="display:flex;align-items:center;gap:.6rem">
+      <div class="header-brand">◈ Finanças</div>
+      <div style="display:inline-flex;align-items:center;gap:.3rem;background:rgba(78,203,141,.1);border:1px solid rgba(78,203,141,.2);border-radius:20px;padding:.12rem .55rem">
+        <span style="width:5px;height:5px;border-radius:50%;background:var(--verde);display:inline-block"></span>
+        <span style="font-size:.62rem;color:var(--verde)">v1.1</span>
+      </div>
+    </div>
     <div class="header-right">
       <div id="sync-status" style="font-size:.7rem;color:var(--texto-dim)"></div>
       <button class="btn-olho" id="btn-olho" onclick="toggleOcultar()">👁 Ocultar</button>
@@ -329,9 +335,7 @@ select option{background:var(--bg2)}
           <select id="ent-cat">
             <option value="salario-lais">💼 Salário — Lais</option>
             <option value="salario-raph">💼 Salário — Raphael</option>
-            <option value="confeitaria">🎂 Confeitaria</option>
-            <option value="freelance">💻 Freelance / Extra</option>
-            <option value="rendimento">📈 Rendimento</option>
+            <option value="rendimento">📈 Rendimento / Investimento</option>
             <option value="outros-ent">📌 Outros</option>
           </select>
         </div>
@@ -499,6 +503,11 @@ function maskVal(v){return valoresOcultos?'• • •':fmtBRL(v)}
 function toggleOcultar(){
   valoresOcultos=!valoresOcultos;
   document.getElementById('btn-olho').textContent=valoresOcultos?'🙈 Mostrar':'👁 Ocultar';
+  // Atualiza todos os valores já renderizados na tela
+  document.querySelectorAll('[data-valor]').forEach(el=>{
+    el.textContent=maskVal(parseFloat(el.dataset.valor));
+  });
+  // Re-renderiza dashboard para atualizar cards
   renderDashboard();
 }
 
@@ -585,7 +594,7 @@ function selEmoji(btn,v){
 // ========== CATEGORIAS ==========
 const CAT={
   'salario-lais':'💼 Salário Lais','salario-raph':'💼 Salário Raphael',
-  'confeitaria':'🎂 Confeitaria','freelance':'💻 Freelance',
+
   'rendimento':'📈 Rendimento','outros-ent':'📌 Outros',
   'moradia':'🏠 Moradia','alimentacao':'🛒 Alimentação',
   'transporte':'🚗 Transporte','saude':'❤️ Saúde',
@@ -718,7 +727,7 @@ function txHtml(l){
       <div class="tx-desc">${l.desc_item}</div>
       <div class="tx-det">${fmtData(l.data)} · ${CAT[l.cat]||l.cat}${parc} · ${l.quem}</div>
     </div>
-    <div class="tx-val ${isEnt?'entrada':'saida'}">${isEnt?'+':'−'}${maskVal(l.valor)}</div>
+    <div class="tx-val ${isEnt?'entrada':'saida'}" data-valor="${l.valor}">${isEnt?'+':'−'}${maskVal(l.valor)}</div>
     <button class="tx-del" onclick="excluirLancamento(${l.id})">✕</button>
   </div>`;
 }
@@ -733,7 +742,7 @@ function contaHtml(c,compact=false){
       <div class="conta-nome">${c.nome}</div>
       <div class="conta-det">${CAT[c.cat]||c.cat} · ${c.rec==='mensal'?'Mensal':c.rec==='anual'?'Anual':'Única'} · vence ${fmtData(c.venc)}</div>
     </div>
-    <div class="conta-valor">${maskVal(c.valor)}</div>
+    <div class="conta-valor" data-valor="${c.valor}">${maskVal(c.valor)}</div>
     ${!compact?`<div class="conta-acoes">
       <button class="btn-pagar" onclick="pagarConta(${c.id},'${c.nome.replace(/'/g,"\\'")}',${c.valor},'${c.cat}')">✓</button>
       <button class="btn-excluir-sm" onclick="excluirConta(${c.id})">✕</button>
