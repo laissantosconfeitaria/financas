@@ -1,4 +1,4 @@
-const CACHE = 'financas-v1';
+const CACHE = 'financas-v2';
 const ASSETS = [
   'https://laissantosconfeitaria.github.io/financas/',
   'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap',
