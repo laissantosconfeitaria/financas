@@ -204,7 +204,7 @@ select option{background:var(--bg2)}
       <div class="header-brand">◈ Finanças</div>
       <div style="display:inline-flex;align-items:center;gap:.3rem;background:rgba(78,203,141,.1);border:1px solid rgba(78,203,141,.2);border-radius:20px;padding:.12rem .55rem">
         <span style="width:5px;height:5px;border-radius:50%;background:var(--verde);display:inline-block"></span>
-        <span style="font-size:.62rem;color:var(--verde)">v1.1</span>
+        <span style="font-size:.62rem;color:var(--verde)">v1.2</span>
       </div>
     </div>
     <div class="header-right">
@@ -374,6 +374,8 @@ select option{background:var(--bg2)}
             <option value="energia">⚡ Energia/Água/Gás</option>
             <option value="vestuario">👗 Vestuário</option>
             <option value="poupanca">💰 Poupança/Invest.</option>
+            <option value="confeitaria-desp">🎂 Despesas Confeitaria</option>
+            <option value="helpi-desp">🐾 Despesas Helpi</option>
             <option value="outros-sai">📌 Outros</option>
           </select>
         </div>
@@ -410,10 +412,17 @@ select option{background:var(--bg2)}
         <div><label>Categoria</label>
           <select id="con-cat">
             <option value="moradia">🏠 Moradia</option>
-            <option value="energia">⚡ Energia/Água/Gás</option>
-            <option value="assinaturas">📱 Assinaturas</option>
+            <option value="alimentacao">🛒 Alimentação</option>
+            <option value="transporte">🚗 Transporte</option>
             <option value="saude">❤️ Saúde</option>
             <option value="educacao">📚 Educação</option>
+            <option value="lazer">🎬 Lazer</option>
+            <option value="assinaturas">📱 Assinaturas</option>
+            <option value="energia">⚡ Energia/Água/Gás</option>
+            <option value="vestuario">👗 Vestuário</option>
+            <option value="poupanca">💰 Poupança/Invest.</option>
+            <option value="confeitaria-desp">🎂 Despesas Confeitaria</option>
+            <option value="helpi-desp">🐾 Despesas Helpi</option>
             <option value="outros-sai">📌 Outros</option>
           </select>
         </div>
@@ -607,7 +616,7 @@ const CAT_COR={
   'moradia':'#5cb8f0','alimentacao':'#4ecb8d','transporte':'#f0c040',
   'saude':'#f09060','lazer':'#a78bfa','assinaturas':'#60d0f0',
   'energia':'#f0c040','educacao':'#90c060','vestuario':'#f080c0',
-  'poupanca':'#4ecb8d','outros-sai':'#4a5268'
+  'poupanca':'#4ecb8d','confeitaria-desp':'#f080c0','helpi-desp':'#a78bfa','outros-sai':'#4a5268'
 };
 
 // ========== SAVE ==========
