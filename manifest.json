@@ -1,14 +1,26 @@
 {
   "name": "Finanças — Lais & Raphael",
-  "short_name": "Finanças",
+  "short_name": "Finanças Casa",
   "description": "Controle financeiro familiar",
+  "id": "/financas/",
   "start_url": "/financas/",
+  "scope": "/financas/",
   "display": "standalone",
   "background_color": "#0e1117",
   "theme_color": "#0e1117",
   "orientation": "portrait",
   "icons": [
-    {"src": "https://laissantosconfeitaria.github.io/icon-192.png", "sizes": "192x192", "type": "image/png"},
-    {"src": "https://laissantosconfeitaria.github.io/icon-512.png", "sizes": "512x512", "type": "image/png"}
+    {
+      "src": "icon-financas.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-financas.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }
